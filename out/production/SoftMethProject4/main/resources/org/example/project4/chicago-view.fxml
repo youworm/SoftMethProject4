@@ -7,14 +7,14 @@
 <VBox spacing="15.0"
       alignment="CENTER"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.project4.NYController">
+      fx:controller="org.example.project4.ChicagoController">
 
     <padding>
         <Insets top="20" bottom="20" left="20" right="20"/>
     </padding>
 
     <!-- Title -->
-    <Label text="New York Style Pizza"
+    <Label text="Chicago Style Pizza"
            style="-fx-font-size: 24px; -fx-font-weight: bold;" />
 
     <!-- Pizza Type -->
@@ -27,6 +27,8 @@
     <Label text="Select Size"/>
 
     <HBox spacing="15" alignment="CENTER">
+
+        <ToggleGroup fx:id="sizeGroup"/>
 
         <RadioButton fx:id="smallBtn" text="Small"/>
         <RadioButton fx:id="mediumBtn" text="Medium"/>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20.0"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.project4.MainController">
+
+    <padding>
+        <Insets top="30.0" bottom="30.0" left="30.0" right="30.0"/>
+    </padding>
+
+    <!-- Title -->
+    <Label text="RU Pizza"
+           style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+
+    <!-- Buttons -->
+    <Button text="Chicago Style" onAction="#onChicagoClick" prefWidth="200"/>
+    <Button text="NY Style" onAction="#onNYClick" prefWidth="200"/>
+    <Button text="Orders Placed" onAction="#onOrdersPlacedClick" prefWidth="200"/>
+    <Button text="Current Order" onAction="#onCurrentOrderClick" prefWidth="200"/>
+
+</VBox>

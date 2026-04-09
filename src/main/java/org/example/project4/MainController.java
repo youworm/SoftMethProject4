@@ -11,7 +11,6 @@ import javafx.scene.Node;
 import java.io.IOException;
 
 public class MainController {
-    @FXML
     private void switchScene(ActionEvent event, String fxmlFile) {
         try {
             Parent root = FXMLLoader.load(
@@ -37,5 +36,15 @@ public class MainController {
     @FXML
     protected void onNYClick(ActionEvent event) {
         switchScene(event, "ny-view.fxml");
+    }
+
+    @FXML
+    protected void onOrdersPlacedClick(ActionEvent event) {
+        switchScene(event, "orders-view.fxml");
+    }
+
+    @FXML
+    protected void onCurrentOrderClick(ActionEvent event) {
+        switchScene(event, "order-current-view.fxml");
     }
 }

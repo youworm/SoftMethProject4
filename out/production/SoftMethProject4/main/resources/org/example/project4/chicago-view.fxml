@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15.0"
+      alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.project4.ChicagoController">
+
+    <padding>
+        <Insets top="20" bottom="20" left="20" right="20"/>
+    </padding>
+
+    <!-- Title -->
+    <Label text="Chicago Style Pizza"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <!-- Pizza Type -->
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Pizza Type:"/>
+        <ComboBox fx:id="pizzaTypeBox" prefWidth="180"/>
+    </HBox>
+
+    <!-- Size Selection -->
+    <Label text="Select Size"/>
+
+    <HBox spacing="15" alignment="CENTER">
+
+        <ToggleGroup fx:id="sizeGroup"/>
+
+        <RadioButton fx:id="smallBtn" text="Small"/>
+        <RadioButton fx:id="mediumBtn" text="Medium"/>
+        <RadioButton fx:id="largeBtn" text="Large"/>
+
+    </HBox>
+
+    <!-- Toppings Section -->
+    <Label text="Customize Toppings"/>
+
+    <HBox spacing="20" alignment="CENTER">
+
+        <!-- Available -->
+        <VBox spacing="5" alignment="CENTER">
+            <Label text="Available Toppings"/>
+            <ListView fx:id="availableToppings" prefHeight="180" prefWidth="150"/>
+        </VBox>
+
+        <!-- Buttons -->
+        <VBox spacing="10" alignment="CENTER">
+            <Button text="Add →" onAction="#addTopping"/>
+            <Button text="← Remove" onAction="#removeTopping"/>
+        </VBox>
+
+        <!-- Selected -->
+        <VBox spacing="5" alignment="CENTER">
+            <Label text="Selected Toppings"/>
+            <ListView fx:id="selectedToppings" prefHeight="180" prefWidth="150"/>
+        </VBox>
+
+    </HBox>
+
+    <!-- Bottom Buttons -->
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="Add to Order"/>
+        <Button text="Back"/>
+    </HBox>
+
+</VBox>

@@ -28,8 +28,6 @@
 
     <HBox spacing="15" alignment="CENTER">
 
-        <ToggleGroup fx:id="sizeGroup"/>
-
         <RadioButton fx:id="smallBtn" text="Small"/>
         <RadioButton fx:id="mediumBtn" text="Medium"/>
         <RadioButton fx:id="largeBtn" text="Large"/>

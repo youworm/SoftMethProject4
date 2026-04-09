@@ -5,10 +5,13 @@ import javafx.scene.control.Label;
 
 public class MainController {
     @FXML
-    private Label welcomeText;
+    protected void onChicagoClick() {
+        System.out.println("Chicago Style clicked");
+        // later: switch scene
+    }
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    protected void onNYClick() {
+        System.out.println("NY Style clicked");
     }
 }

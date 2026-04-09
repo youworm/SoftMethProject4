@@ -1,18 +1,17 @@
 package org.example.project4.backend;
 
-public class Deluxe extends Pizza {
+public class Meatzza extends Pizza {
 
-    private static final double SMALL_PRICE = 18.99;
-    private static final double MEDIUM_PRICE = 20.99;
-    private static final double LARGE_PRICE = 22.99;
+    private static final double SMALL_PRICE = 19.99;
+    private static final double MEDIUM_PRICE = 21.99;
+    private static final double LARGE_PRICE = 23.99;
 
-    public Deluxe() {
+    public Meatzza() {
         super();
         addTopping(Topping.SAUSAGE);
         addTopping(Topping.PEPPERONI);
-        addTopping(Topping.GREEN_PEPPER);
-        addTopping(Topping.ONION);
-        addTopping(Topping.MUSHROOM);
+        addTopping(Topping.BEEF);
+        addTopping(Topping.HAM);
     }
 
     @Override

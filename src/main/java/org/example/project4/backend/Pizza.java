@@ -3,15 +3,14 @@ package org.example.project4.backend;
 import java.util.ArrayList;
 
 public abstract class Pizza {
-    private ArrayList<Topping> toppings;
-    private Crust crust;
-    private Size size;
+    private ArrayList<Topping> toppings; //Topping is a enum class
+    private Crust crust; //Crust is a enum class
+    private Size size; //Size is a enum class
+    public abstract double price(); //polymorphism
 
     public Pizza() {
         toppings = new ArrayList<>();
     }
-
-    public abstract double price();
 
     public void addTopping(Topping topping) {
         toppings.add(topping);

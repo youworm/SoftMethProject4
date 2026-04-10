@@ -74,14 +74,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    /** Initializes the controller (currently unused). */
-    public void initialize() { }
 
-    /**
-     * Navigates to the Chicago pizza ordering view.
-     *
-     * @param event the button click event
-     */
     @FXML
     protected void onChicagoClick(ActionEvent event) {
         switchScene(event, "chicago-view.fxml");

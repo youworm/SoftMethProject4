@@ -69,6 +69,16 @@ public class NYController {
         selectedToppings.getItems().clear();
         crustLabel.setText("");
         priceLabel.setText("$0.00");
+
+        try {
+            Image image = new Image(
+                    getClass().getResource("/org/example/project4/images/ny.png").toExternalForm()
+            );
+            pizzaImage.setImage(image);
+        } catch (Exception e) {
+            e.printStackTrace();
+            pizzaImage.setImage(null);
+        }
     }
 
     /**
@@ -80,7 +90,7 @@ public class NYController {
         String type = pizzaTypeBox.getValue();
         Size size = sizeBox.getValue();
 
-        if (type == null || size == null) {
+        if (type == null) {
             return;
         }
 
@@ -103,8 +113,16 @@ public class NYController {
                 return;
         }
 
-        currentPizza.setSize(size);
-        refreshView();
+        selectedToppings.getItems().setAll(currentPizza.getToppings());
+        crustLabel.setText(String.valueOf(currentPizza.getCrust()));
+        updateImage();
+
+        if (size != null) {
+            currentPizza.setSize(size);
+            priceLabel.setText("$" + String.format("%.2f", currentPizza.price()));
+        } else {
+            priceLabel.setText("$0.00");
+        }
     }
 
     /**
@@ -174,6 +192,15 @@ public class NYController {
             return;
         }
 
+        if (currentPizza.getSize() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Missing Size");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a size before adding the pizza to the order.");
+            alert.showAndWait();
+            return;
+        }
+
         currentOrder.addPizza(currentPizza);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -196,13 +223,29 @@ public class NYController {
             selectedToppings.getItems().clear();
             crustLabel.setText("");
             priceLabel.setText("$0.00");
-            pizzaImage.setImage(null);
+
+            try {
+                Image image = new Image(
+                        getClass().getResource("/org/example/project4/images/ny.png").toExternalForm()
+                );
+                pizzaImage.setImage(image);
+            } catch (Exception e) {
+                e.printStackTrace();
+                pizzaImage.setImage(null);
+            }
+
             return;
         }
 
         selectedToppings.getItems().setAll(currentPizza.getToppings());
         crustLabel.setText(String.valueOf(currentPizza.getCrust()));
-        priceLabel.setText("$" + String.format("%.2f", currentPizza.price()));
+
+        if (currentPizza.getSize() != null) {
+            priceLabel.setText("$" + String.format("%.2f", currentPizza.price()));
+        } else {
+            priceLabel.setText("$0.00");
+        }
+
         updateImage();
     }
 
@@ -231,6 +274,7 @@ public class NYController {
             Image image = new Image(getClass().getResource(path).toExternalForm());
             pizzaImage.setImage(image);
         } catch (Exception e) {
+            e.printStackTrace();
             pizzaImage.setImage(null);
         }
     }

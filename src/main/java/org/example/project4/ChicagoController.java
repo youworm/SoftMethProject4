@@ -14,6 +14,11 @@ import org.example.project4.backend.*;
 
 import java.io.IOException;
 
+/**
+ * Controller for the Chicago pizza ordering view.
+ * Handles pizza creation, topping management, pricing updates,
+ * and navigation back to the main screen.
+ */
 public class ChicagoController {
 
     private Order currentOrder;
@@ -41,11 +46,21 @@ public class ChicagoController {
     @FXML
     private ImageView pizzaImage;
 
+    /**
+     * Initializes shared order data from the main controller.
+     *
+     * @param currentOrder the current active order
+     * @param storeOrders the store-wide order list
+     */
     public void setData(Order currentOrder, StoreOrders storeOrders) {
         this.currentOrder = currentOrder;
         this.storeOrders = storeOrders;
     }
 
+    /**
+     * Initializes UI components when the FXML view is loaded.
+     * Populates combo boxes, list views, and sets default image/state.
+     */
     @FXML
     public void initialize() {
         pizzaTypeBox.getItems().addAll("Deluxe", "BBQ Chicken", "Meatzza", "Build Your Own");
@@ -66,6 +81,10 @@ public class ChicagoController {
         }
     }
 
+    /**
+     * Creates a pizza based on selected type and size.
+     * Updates toppings, crust display, image, and price.
+     */
     @FXML
     public void createPizza() {
         String type = pizzaTypeBox.getValue();
@@ -106,6 +125,10 @@ public class ChicagoController {
         }
     }
 
+    /**
+     * Adds a topping to a Build Your Own pizza if valid.
+     * Enforces a maximum of 5 toppings.
+     */
     @FXML
     public void addTopping() {
         if (currentPizza == null) {
@@ -138,6 +161,9 @@ public class ChicagoController {
         refreshView();
     }
 
+    /**
+     * Removes a selected topping from a Build Your Own pizza.
+     */
     @FXML
     public void removeTopping() {
         if (currentPizza == null) {
@@ -157,6 +183,9 @@ public class ChicagoController {
         refreshView();
     }
 
+    /**
+     * Adds the current pizza to the active order and resets the UI.
+     */
     @FXML
     public void addToOrder() {
         if (currentPizza == null || currentOrder == null) {
@@ -177,6 +206,9 @@ public class ChicagoController {
         refreshView();
     }
 
+    /**
+     * Refreshes the UI to reflect the current pizza state.
+     */
     private void refreshView() {
         if (currentPizza == null) {
             selectedToppings.getItems().clear();
@@ -202,6 +234,9 @@ public class ChicagoController {
         updateImage();
     }
 
+    /**
+     * Updates the pizza image based on pizza type.
+     */
     private void updateImage() {
         if (currentPizza == null) {
             pizzaImage.setImage(null);
@@ -228,6 +263,11 @@ public class ChicagoController {
         }
     }
 
+    /**
+     * Navigates back to the main view while preserving order data.
+     *
+     * @param event the action event triggered by the back button
+     */
     @FXML
     public void onBackClick(ActionEvent event) {
         try {

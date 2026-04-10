@@ -15,6 +15,10 @@ import org.example.project4.backend.StoreOrders;
 
 import java.io.IOException;
 
+/**
+ * Controller for the store orders view.
+ * Allows viewing, canceling, and exporting all placed orders.
+ */
 public class OrdersController {
 
     private StoreOrders storeOrders;
@@ -26,12 +30,21 @@ public class OrdersController {
     @FXML
     private TextArea orderDetailsArea;
 
+    /**
+     * Sets shared application data and refreshes the order list.
+     *
+     * @param storeOrders the store-wide order collection
+     * @param currentOrder the active order being built
+     */
     public void setData(StoreOrders storeOrders, Order currentOrder) {
         this.storeOrders = storeOrders;
         this.currentOrder = currentOrder;
         refreshOrders();
     }
 
+    /**
+     * Refreshes the list of order numbers in the ComboBox.
+     */
     private void refreshOrders() {
         if (orderComboBox == null || orderDetailsArea == null) {
             return;
@@ -49,6 +62,9 @@ public class OrdersController {
         }
     }
 
+    /**
+     * Displays details of the selected order.
+     */
     @FXML
     public void showOrderDetails() {
         if (storeOrders == null) {
@@ -66,6 +82,9 @@ public class OrdersController {
         }
     }
 
+    /**
+     * Cancels (removes) the selected order from the store.
+     */
     @FXML
     public void cancelOrder() {
         if (storeOrders == null) {
@@ -90,6 +109,9 @@ public class OrdersController {
         }
     }
 
+    /**
+     * Exports all store orders to a text file (orders.txt).
+     */
     @FXML
     public void exportOrders() {
         if (storeOrders == null || storeOrders.isEmpty()) {
@@ -119,6 +141,11 @@ public class OrdersController {
         }
     }
 
+    /**
+     * Returns to the main menu while preserving application state.
+     *
+     * @param event the button click event
+     */
     @FXML
     public void onBackClick(ActionEvent event) {
         try {

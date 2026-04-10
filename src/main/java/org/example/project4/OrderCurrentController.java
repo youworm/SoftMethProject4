@@ -15,6 +15,11 @@ import org.example.project4.backend.Pizza;
 
 import java.io.IOException;
 
+/**
+ * Controller for the current order screen.
+ * Displays pizzas in the current order and allows modification,
+ * clearing, and placing of the order.
+ */
 public class OrderCurrentController {
 
     private Order currentOrder;
@@ -38,6 +43,9 @@ public class OrderCurrentController {
     @FXML
     private Label totalLabel;
 
+    /**
+     * Initializes UI components with default values before data is loaded.
+     */
     @FXML
     public void initialize() {
         // screen starts empty until data is passed in
@@ -47,12 +55,21 @@ public class OrderCurrentController {
         totalLabel.setText("$0.00");
     }
 
+    /**
+     * Sets shared application data and refreshes the view.
+     *
+     * @param currentOrder the active order being displayed
+     * @param storeOrders the global store order list
+     */
     public void setData(Order currentOrder, StoreOrders storeOrders) {
         this.currentOrder = currentOrder;
         this.storeOrders = storeOrders;
         refreshView();
     }
 
+    /**
+     * Refreshes all UI elements to reflect the current order state.
+     */
     private void refreshView() {
         if (currentOrder == null) {
             currentOrderList.getItems().clear();
@@ -72,6 +89,9 @@ public class OrderCurrentController {
         totalLabel.setText("$" + String.format("%.2f", currentOrder.getTotal()));
     }
 
+    /**
+     * Removes the selected pizza from the current order.
+     */
     @FXML
     public void removePizza() {
         Pizza selectedPizza = currentOrderList.getSelectionModel().getSelectedItem();
@@ -84,12 +104,19 @@ public class OrderCurrentController {
         refreshView();
     }
 
+    /**
+     * Clears all pizzas from the current order.
+     */
     @FXML
     public void clearOrder() {
         currentOrder.clear();
         refreshView();
     }
 
+    /**
+     * Places the current order into the store order list
+     * and resets the current order.
+     */
     @FXML
     public void placeOrder() {
         if (currentOrder == null || currentOrder.isEmpty() || storeOrders == null) {
@@ -101,6 +128,11 @@ public class OrderCurrentController {
         refreshView();
     }
 
+    /**
+     * Navigates back to the main menu screen while preserving data.
+     *
+     * @param event the button click event
+     */
     @FXML
     public void onBackClick(ActionEvent event) {
         try {

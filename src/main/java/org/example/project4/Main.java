@@ -4,26 +4,19 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.project4.backend.*;
 
 import java.io.IOException;
 
 public class Main extends Application {
-
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(
-                Main.class.getResource("/Chicago-view.fxml")
-        );
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/org/example/project4/main-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
-        Scene scene = new Scene(loader.load());
-
-        stage.setTitle("RU Pizza - Chicago Style");
+        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

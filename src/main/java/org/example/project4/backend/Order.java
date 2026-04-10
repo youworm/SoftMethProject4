@@ -48,6 +48,10 @@ public class Order {
         return subtotal;
     }
 
+    public void clear() {
+        pizzas.clear();
+    }
+
     public double getSalesTax() {
         return getSubtotal() * NJ_SALES_TAX;
     }

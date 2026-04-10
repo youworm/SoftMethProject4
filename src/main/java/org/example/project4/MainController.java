@@ -1,32 +1,63 @@
 package org.example.project4;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.stage.Stage;
+import org.example.project4.backend.Order;
+import org.example.project4.backend.StoreOrders;
 
 import java.io.IOException;
 
 public class MainController {
+
+    private Order currentOrder;
+    private StoreOrders storeOrders;
+
+    public void setData(Order currentOrder, StoreOrders storeOrders) {
+        this.currentOrder = currentOrder;
+        this.storeOrders = storeOrders;
+    }
+
     private void switchScene(ActionEvent event, String fxmlFile) {
         try {
-            Parent root = FXMLLoader.load(
+            FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/org/example/project4/" + fxmlFile)
             );
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root = loader.load();
+            Object controller = loader.getController();
 
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            if (controller instanceof OrderCurrentController) {
+                ((OrderCurrentController) controller).setData(currentOrder, storeOrders);
+            }
+
+            if (controller instanceof OrdersController) {
+                ((OrdersController) controller).setData(storeOrders, currentOrder);
+            }
+
+            if (controller instanceof ChicagoController) {
+                ((ChicagoController) controller).setData(currentOrder, storeOrders);
+            }
+
+            if (controller instanceof NYController) {
+                ((NYController) controller).setData(currentOrder, storeOrders);
+            }
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("RU Pizza");
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public void initialize() { }
 
     @FXML
     protected void onChicagoClick(ActionEvent event) {
@@ -47,4 +78,5 @@ public class MainController {
     protected void onCurrentOrderClick(ActionEvent event) {
         switchScene(event, "order-current-view.fxml");
     }
+
 }

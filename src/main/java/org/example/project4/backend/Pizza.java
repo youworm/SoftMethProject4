@@ -42,7 +42,19 @@ public abstract class Pizza {
 
     @Override
     public String toString() {
-        return size + " " + crust + " " + toppings + " $" +
-                String.format("%.2f", price());
+        StringBuilder toppingsStr = new StringBuilder();
+
+        for (int i = 0; i < toppings.size(); i++) {
+            toppingsStr.append(toppings.get(i));
+            if (i < toppings.size() - 1) {
+                toppingsStr.append(", ");
+            }
+        }
+
+        return this.getClass().getSimpleName() +
+                " (" + crust + "), " +
+                toppingsStr +
+                ", " + size +
+                ", $" + String.format("%.2f", price());
     }
 }

@@ -57,8 +57,6 @@ public class MainController {
         }
     }
 
-    public void initialize() { }
-
     @FXML
     protected void onChicagoClick(ActionEvent event) {
         switchScene(event, "chicago-view.fxml");

@@ -1,0 +1,6 @@
+Order #1
+Deluxe (BROOKLYN), SAUSAGE, PEPPERONI, GREEN_PEPPER, ONION, MUSHROOM, SMALL, $18.99
+Subtotal: $18.99
+Sales Tax: $1.26
+Order Total: $20.25
+

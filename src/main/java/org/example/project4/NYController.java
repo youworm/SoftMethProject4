@@ -14,6 +14,11 @@ import org.example.project4.backend.*;
 
 import java.io.IOException;
 
+/**
+ * Controller for the New York pizza ordering view.
+ * Handles pizza creation, topping management, order placement,
+ * and UI updates specific to NY-style pizzas.
+ */
 public class NYController {
 
     private Order currentOrder;
@@ -41,11 +46,21 @@ public class NYController {
     @FXML
     private ImageView pizzaImage;
 
+    /**
+     * Sets shared application data for the controller.
+     *
+     * @param currentOrder the active order being built
+     * @param storeOrders the global store order list
+     */
     public void setData(Order currentOrder, StoreOrders storeOrders) {
         this.currentOrder = currentOrder;
         this.storeOrders = storeOrders;
     }
 
+    /**
+     * Initializes UI components when the view is loaded.
+     * Populates combo boxes and resets labels/list views.
+     */
     @FXML
     public void initialize() {
         pizzaTypeBox.getItems().addAll("Deluxe", "BBQ Chicken", "Meatzza", "Build Your Own");
@@ -56,6 +71,10 @@ public class NYController {
         priceLabel.setText("$0.00");
     }
 
+    /**
+     * Creates a pizza based on selected type and size.
+     * Initializes NY-style pizza using factory pattern.
+     */
     @FXML
     public void createPizza() {
         String type = pizzaTypeBox.getValue();
@@ -88,6 +107,9 @@ public class NYController {
         refreshView();
     }
 
+    /**
+     * Adds a topping to a Build Your Own pizza (max 5 toppings).
+     */
     @FXML
     public void addTopping() {
         if (currentPizza == null) {
@@ -120,6 +142,10 @@ public class NYController {
         refreshView();
     }
 
+
+    /**
+     * Removes a selected topping from a Build Your Own pizza.
+     */
     @FXML
     public void removeTopping() {
         if (currentPizza == null) {
@@ -139,6 +165,9 @@ public class NYController {
         refreshView();
     }
 
+    /**
+     * Adds the current pizza to the active order and resets the view.
+     */
     @FXML
     public void addToOrder() {
         if (currentPizza == null || currentOrder == null) {
@@ -159,6 +188,9 @@ public class NYController {
         refreshView();
     }
 
+    /**
+     * Refreshes UI elements to match current pizza state.
+     */
     private void refreshView() {
         if (currentPizza == null) {
             selectedToppings.getItems().clear();
@@ -174,6 +206,9 @@ public class NYController {
         updateImage();
     }
 
+    /**
+     * Updates pizza image based on pizza type.
+     */
     private void updateImage() {
         if (currentPizza == null) {
             pizzaImage.setImage(null);
@@ -200,6 +235,11 @@ public class NYController {
         }
     }
 
+    /**
+     * Returns to the main menu while preserving order data.
+     *
+     * @param event the button click event
+     */
     @FXML
     public void onBackClick(ActionEvent event) {
         try {

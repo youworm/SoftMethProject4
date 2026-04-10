@@ -99,8 +99,7 @@ public class ChicagoController {
         updateImage();
 
         // only set price once size is selected
-        if (size != null) {
-            currentPizza.setSize(size);
+        if (currentPizza.getSize() != null) {
             priceLabel.setText("$" + String.format("%.2f", currentPizza.price()));
         } else {
             priceLabel.setText("$0.00");
